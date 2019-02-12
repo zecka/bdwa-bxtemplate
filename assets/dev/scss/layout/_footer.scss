@@ -1,0 +1,95 @@
+.footer {
+    background-color: $dark-gray;
+    color: $white;
+
+    &__container {
+        @include breakpoint(md-min) {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        padding: 90px 0 120px;
+    }
+
+    &__widget {
+        @include breakpoint(md-min) {
+            width: calc(33% - #{(40/3)}px);
+        }
+
+        @include breakpoint(md) {
+            &+& {
+                margin-top: 80px;
+            }
+        }
+
+        font-size: 13px;
+
+        &__title {
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        &--about {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li+li {
+                margin-top: 7px;
+            }
+        }
+    }
+
+    &__secondary {
+        padding: 100px 0;
+        border-top: 1px solid rgba($white, 0.08);
+        text-align: center;
+        font-family: $serif;
+        font-style: italic;
+
+        .copyright {
+            display: inline-flex;
+            align-items: center;
+
+            &::before,
+            &::after {
+                content: "\0020";
+                display: inline-block;
+                height: 1px;
+                width: 30px;
+                background-color: $white;
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+.twitter-feed {
+
+    &__item {
+        display: flex;
+        line-height: 1.5em;
+        font-size: 13px;
+
+        &+& {
+            margin-top: 20px;
+        }
+    }
+
+    &__avatar {
+        width: 70px;
+        padding-right: 20px;
+        flex-shrink: 0;
+    }
+
+    a {
+        color: $gray;
+        word-break: break-all;
+    }
+}

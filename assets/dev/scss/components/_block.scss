@@ -1,0 +1,61 @@
+.block {
+    @include breakpoint(md-min) {
+        display: flex;
+    }
+
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+
+    &__item {
+        @include breakpoint(md-min) {
+            width: 50%;
+        }
+
+        padding: 20px;
+        display: flex;
+        align-items: center;
+
+        &--yellow {
+            background-color: $yellow;
+        }
+
+        &--img {
+            background-position: center center;
+            background-size: cover;
+
+            &::before {
+                content: "\0020";
+                display: block;
+                width: 100%;
+                padding-bottom: 100%;
+            }
+
+        }
+
+        &__content {
+            text-align: center;
+            max-width: 580px;
+            margin: auto;
+
+            @include breakpoint(md) {
+                padding: 50px;
+            }
+
+            em {
+                color: #595959;
+                font-size: 14px;
+                line-height: 22px;
+                letter-spacing: 0.8px;
+            }
+
+            img {
+                max-width: 140px;
+            }
+        }
+
+        &__sign {
+            margin-top: 20%;
+        }
+    }
+}

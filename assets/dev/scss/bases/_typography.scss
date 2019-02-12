@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300i,700|Open+Sans:400, 400i,700');
+$serif: 'Merriweather',
+serif;
+$sans-serif: 'Open Sans',
+sans-serif;
+
+html {
+  /* Adjust font size */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  /* Font varient */
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  /* Smoothing */
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+
+body {
+  font-family: $sans-serif;
+}
+
+header {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $serif;
+  font-weight: 400;
+  letter-spacing: calculateEm(53, 1);
+}
+
+h1 {
+  font-size: 53px;
+}
+
+h2 {
+  font-size: 38px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 13px;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+blockquote {
+  font-family: $serif;
+  text-align: center;
+  font-size: 30px;
+  margin: 50px 0 80px 0;
+}
+
+em {
+  font-style: italic;
+  font-family: $serif;
+  font-weight: lighter;
+}
+
+.heading {
+  &__title {
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::after {
+      content: "\0020";
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: $black;
+      margin-top: 20px;
+
+      .invert & {
+        background-color: $white;
+      }
+    }
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+    font-family: $sans-serif;
+    line-height: 1.5em;
+    letter-spacing: 2px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+.invert {
+  color: $white;
+}
