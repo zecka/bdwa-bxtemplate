@@ -3,6 +3,7 @@ var $ = require('gulp-load-plugins')({lazy: true});
 var browserSync = require('browser-sync').create();
 const iconfont = require('gulp-iconfont');
 const iconfontCss = require('gulp-iconfont-css');
+const runSequence = require('run-sequence');
 
 var devUrl = "http://localhost:8888/__FRONTEND/2eme-annee/02-gulp/"
 var paths = {
@@ -84,7 +85,7 @@ gulp.task('scripts', function() {
 var runTimestamp = Math.round(Date.now()/1000);
 var fontName = 'icons';
 gulp.task('iconfont', function(){
-  gulp.src([paths.icons.src])
+  return gulp.src([paths.icons.src])
     .pipe(iconfontCss({
       fontName: fontName,
       targetPath: '../../../dev/scss/fonts/_icons.scss',
@@ -113,3 +114,5 @@ gulp.task('watch', function() {
     browserSync.watch(paths.scripts.src.custom).on('change', gulp.series('scripts'));
     browserSync.watch('index.html').on('change', gulp.series(browserSync.reload));
  });
+
+gulp.task('build', gulp.series('scripts', 'iconfont', 'scss', 'imagemin'));
