@@ -1,11 +1,13 @@
 .scroll-navigator {
-    width: 65px;
-    height: 65px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateZ(45deg);
-    background: $black;
+    @include breakpoint(md-min) {
+        width: 65px;
+        height: 65px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateZ(45deg);
+        background: $black;
+    }
 
     &::before {
         content: "\0020";
@@ -16,12 +18,36 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) rotateZ(-45deg);
+
+        transform: translate(-50%, -50%) rotateZ(90deg);
+
+        @include breakpoint(md-min) {
+            transform: translate(-50%, -50%) rotateZ(-45deg);
+        }
+    }
+
+    @include breakpoint(md) {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: black;
+        padding: 0 20px;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__next,
     &__prev {
-        position: absolute;
+        @include breakpoint(md-min) {
+            position: absolute;
+        }
+
+        @include breakpoint(md) {
+            transform: rotateZ(45deg) translateX(-50%);
+        }
+
         width: 17px;
         height: 17px;
         border: 1px solid $white;
@@ -33,42 +59,27 @@
     }
 
     &__prev {
-        left: 13px;
-        top: 13px;
+        @include breakpoint(md-min) {
+            left: 13px;
+            top: 13px;
+        }
+
+        @include breakpoint(md) {
+            transform: rotateZ(45deg) translateX(50%);
+        }
+
         border-bottom: none;
         border-right: none;
     }
 
     &__next {
-        right: 13px;
-        bottom: 13px;
+        @include breakpoint(md-min) {
+            right: 13px;
+            bottom: 13px;
+        }
+
         border-top: none;
         border-left: none;
     }
-}
 
-.pagination {
-    position: fixed;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    &__bullet {
-        width: 12px;
-        height: 12px;
-        border: 2px solid $black;
-        display: block;
-        border-radius: 20px;
-        background: black;
-        transition: all .3s;
-
-        &+& {
-            margin-top: 10px;
-        }
-
-        &.active,
-        &:hover {
-            background: transparent;
-        }
-    }
 }

@@ -1,0 +1,25 @@
+.pagination {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &__bullet {
+        width: 12px;
+        height: 12px;
+        border: 2px solid $black;
+        display: block;
+        border-radius: 20px;
+        background: black;
+        transition: all .3s;
+
+        &+& {
+            margin-top: 10px;
+        }
+
+        &.active,
+        &:hover {
+            background: transparent;
+        }
+    }
+}

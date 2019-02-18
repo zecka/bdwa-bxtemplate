@@ -1,10 +1,13 @@
 .block {
-    @include breakpoint(md-min) {
-        display: flex;
-    }
+    display: flex;
+
 
     &--reverse {
         flex-direction: row-reverse;
+    }
+
+    @include breakpoint(md) {
+        flex-direction: column-reverse;
     }
 
     &__item {

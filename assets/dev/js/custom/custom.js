@@ -3,11 +3,24 @@ var currentSection = 0;
 
 $( document ).ready(function() {
 
-    $('.hamburger').on('click',function(){
-        $('.hamburger__icon').toggleClass('active')
-        $('.header').toggleClass('active')
-    });
+    hamburgerInit();
+
+    sectionInit();
+
+    paginationInit();
+    scrollNavigatorInit();
     
+    var active = getActiveSection();
+    setActiveSection(active);
+});
+
+$(document).on('scroll',function(){
+    var active = getActiveSection();
+    if(active !== currentSection){
+        setActiveSection(active);
+    }
+})
+function sectionInit(){
     var i = 0;
     $('section.block').each(function(){
         sections.push(this);
@@ -17,7 +30,14 @@ $( document ).ready(function() {
         i++;
     });
     sections.reverse();
-
+}
+function hamburgerInit(){
+    $('.hamburger').on('click',function(){
+        $('.hamburger__icon').toggleClass('active')
+        $('.header').toggleClass('active')
+    });
+}
+function paginationInit(){
     $('.pagination__bullet').on('click', function(){
         var id = $(this).data('id');
         var section = $('section.block[data-id="'+id+'"]').find('.block__item__content');
@@ -27,15 +47,38 @@ $( document ).ready(function() {
             //alert("Finished animating");
          });
     });
-});
+}
+function scrollNavigatorInit(){
+    $('.scroll-navigator__next').on('click', function(){
+        var active = getActiveSection();
+        console.log(active);
+        id = $(active).data('id')
+        if(id !== (sections.length - 1)){
+            id=id+1;
+            var section = $('section.block[data-id="'+id+'"]').find('.block__item__content');
+            var sectionTop = $(section).offset().top;
 
-$(document).on('scroll',function(){
-    var active = getActiveSection();
-    if(active !== currentSection){
-        setActiveSection(active);
-    }
-})
+            $('body,html').stop().animate({scrollTop:(sectionTop - 120)}, 500, 'swing', function() { 
+                //alert("Finished animating");
+            });
+        }
+    });
 
+    $('.scroll-navigator__prev').on('click', function(){
+        var active = getActiveSection();
+        console.log(active);
+        id = $(active).data('id')
+        if(id !== 0){
+            id=id-1;
+            var section = $('section.block[data-id="'+id+'"]').find('.block__item__content');
+            var sectionTop = $(section).offset().top;
+
+            $('body,html').stop().animate({scrollTop:(sectionTop - 120)}, 500, 'swing', function() { 
+                //alert("Finished animating");
+            });
+        }
+    });
+}
 function getActiveSection(){
     var windowHeight = $(window).height();
     var scrollBottom = $(window).scrollTop() + windowHeight;
@@ -56,7 +99,6 @@ function getActiveSection(){
     if(typeof activeSection == 'undefined'){
         activeSection = sections[(sections.length - 1)];
     }
-    console.log($(activeSection).data('id'))
 
     return activeSection;
 
