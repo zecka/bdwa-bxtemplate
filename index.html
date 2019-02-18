@@ -41,7 +41,12 @@
             </nav>
         </div>
     </header>
-    <section class="block">
+    <div class="scroll-navigator">
+        <a href="javascript:void(0)" class="scroll-navigator__prev"></a>
+        <a href="javascript:void(0)" class="scroll-navigator__next"></a>
+    </div>
+    <div class="pagination"></div>
+    <section class="block" id="intro">
         <div class="block__item block__item--yellow block__item--img"></div>
         <div class="block__item">
             <div class="block__item__content">
@@ -57,7 +62,7 @@
             </div>
         </div>
     </section>
-    <section class="block block--reverse">
+    <section class="block block--reverse" id="mimosa">
         <div class="block__item block__item--mimosa block__item--img" style="background-image: url('assets/build/img/mimosa-mockup.jpg')"></div>
         <div class="block__item">
             <div class="block__item__content">
@@ -75,7 +80,7 @@
         </div>
     </section>
 
-    <section class="block">
+    <section class="block" id="gatria">
         <div class="block__item block__item--img" style="background-image: url('assets/build/img/gatria.jpg')"></div>
         <div class="block__item">
             <div class="block__item__content">
@@ -95,7 +100,7 @@
         </div>
     </section>
 
-    <section class="block block--reverse">
+    <section class="block block--reverse" id="adhara">
         <div class="block__item block__item--mimosa block__item--img" style="background-image: url('assets/build/img/adhara.jpg')"></div>
         <div class="block__item">
             <div class="block__item__content">
@@ -115,12 +120,12 @@
         </div>
     </section>
 
-    <section class="block block">
-        <div class="block__item block__item--mimosa block__item--img" style="background-image: url('assets/build/img/amber.jpg')"></div>
+    <section class="block" id="amber">
+        <div class="block__item block__item block__item--img" style="background-image: url('assets/build/img/amber.jpg')"></div>
         <div class="block__item">
             <div class="block__item__content">
                 <div class="heading">
-                    <h3 class="heading__title">Adhara coffee shop</h3>
+                    <h3 class="heading__title">Amber coffee shop</h3>
                     <h4 class="heading__subtitle">The agency that will make you change the way you sell</h4>
                 </div>
                 <p>
@@ -202,7 +207,7 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/build/js/custom/main.min.js"></script>
+    <script src="assets/build/js/custom/main.js"></script>
 </body>
 
 </html>
