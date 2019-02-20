@@ -106,7 +106,10 @@ gulp.task('iconfont', function(){
 
 gulp.task('watch', function() {
     browserSync.init({
-        proxy: devUrl
+        //proxy: devUrl
+        server: {
+            baseDir: "./"
+        }
     });
     
     browserSync.watch('assets/dev/icons/').on('change', gulp.series('iconfont', browserSync.reload));
